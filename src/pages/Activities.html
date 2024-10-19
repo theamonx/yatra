@@ -1,0 +1,43 @@
+<!-- src/pages/Activities.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities</title>
+    <link href="../main.css" rel="stylesheet">
+    <link href="../output.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app"></div>
+    <!-- <script src="../app.js" type="module"></script> -->
+    <script type="module">
+        import { fetchActivities } from '../api.js';
+        import Navbar from '../components/Navbar.js';
+        import ActivityCard from '../components/ActivityCard.js';
+        import Footer from '../components/Footer.js';
+
+        const app = document.getElementById('app');
+
+        const renderActivitiesPage = async () => {
+            app.innerHTML = `
+                ${Navbar()}
+                <div class="container mx-auto p-4">
+                    <h1 class="text-3xl font-bold mb-4">All Activities</h1>
+                    <div id="activity-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+                </div>
+                ${Footer()}
+            `;
+            await loadActivities();
+        };
+
+        const loadActivities = async () => {
+            const activities = await fetchActivities();
+            const activityCards = activities.map(activity => ActivityCard(activity)).join('');
+            document.getElementById('activity-cards').innerHTML = activityCards;
+        };
+
+        renderActivitiesPage();
+    </script>
+</body>
+</html>

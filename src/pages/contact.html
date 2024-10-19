@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link href="../main.css" rel="stylesheet">
+    <link href="../output.css" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-cover h-[900px]" style="background-image: url(../assets/footer.jpg);">
+        <div id="navLoad"></div>
+    <div class="ml-28 my-8 w-[900px] bg-[#000000cc] rounded-lg p-8">
+        <div>
+            <h1 class='text-xl sm:text-2xl font-bold text-neutral-400'>Contact Us</h1>
+            
+        </div>
+        <form id="contactForm" class="w-[80%] mx-auto flex flex-wrap gap-4 justify-between items- mt-8">
+            <div class="flex flex-col w-[300px]">
+                <label for="name" class='mb-0.5 text-gray-600'>Name:</label>
+                <input type="text" id="name" name="name" class='p-2 border rounded-xl border-gray-500' required>
+            </div>
+            <div class="flex flex-col w-[300px]">
+                <label for="phone" class='mb-0.5 text-gray-600'>Phone:</label>
+                <input type="text" id="phone" name="phone" class='p-2 border rounded-xl border-gray-500' required>
+            </div>
+            <div class="flex flex-col w-[700px]">
+                <label for="email" class='mb-0.5 text-gray-600'>Email:</label>
+                <input type="email" id="email" name="email" class='p-2 border rounded-xl border-gray-500' required>
+            </div>
+            <div class="flex flex-col w-[700px]">
+                <label for="address" class='mb-0.5 text-gray-600'>Address:</label>
+                <input type="text" id="address" name="address" class='p-2 border rounded-xl border-gray-500'>
+            </div>
+
+            <div class="mt-4">
+                <h1 class='text-xl font-bold text-neutral-400'>Package Details</h1>
+            </div>
+            <div class="flex flex-wrap gap-4 justify-between">
+                <div class="flex flex-col w-[300px]">
+                    <label for="title" class='mb-0.5 text-gray-600'>Package Title:</label>
+                    <input type="text" id="title" name="title" class='p-2 border rounded-xl border-gray-500' readonly>
+                </div>
+                <div class="flex flex-col w-[300px]">
+                    <label for="price" class='mb-0.5 text-gray-600'>Price:</label>
+                    <input type="number" id="price" name="price" class='p-2 border rounded-xl border-gray-500' readonly>
+                </div>
+                <div class="flex flex-col w-[300px]">
+                    <label for="location" class='mb-0.5 text-gray-600'>Location:</label>
+                    <input type="text" id="location" name="location" class='p-2 border rounded-xl border-gray-500' readonly>
+                </div>
+                <div class="flex flex-col w-[300px]">
+                    <label for="days" class='mb-0.5 text-gray-600'>Days:</label>
+                    <input type="number" id="days" name="days" class='p-2 border rounded-xl border-gray-500' readonly>
+                </div>
+                <button type="submit" class='ml-auto w-[300px] py-3 !mt-8  px-4 text-white text-base bg-[#ed7440] rounded-xl font-bold'>Submit</button>
+            </div>
+            <!-- <div class="flex flex-col w-[650px]">
+                <label for="description" class='mb-0.5 text-gray-600'>Description:</label>
+                <input type="text" id="description" name="description" class='p-3 border rounded-xl border-gray-500'
+                    required>
+                </div> -->
+                <!-- <div class="flex flex-col w-[650px]">
+                    <label for="activities" class='mb-0.5 text-gray-600'>Activities:</label>
+                    <input type="text" id="activities" name="activities" class='p-3 border rounded-xl border-gray-500'
+                    required>
+                </div> -->
+            </form>
+        </div>
+    </div>
+    <script src="../ContactForm.js"></script>
+    <script type="module">
+        import Navbar from '../components/Navbar.js'; // Import Navbar component// Import Footer component
+
+        const navLoad = document.getElementById('navLoad');
+        const footerLoad = document.getElementById('footerLoad') // Get the app container element
+
+        // Function to fill the contact form with query parameters (if needed)
+        const fillContactForm = () => {
+            document.addEventListener('DOMContentLoaded', function () {
+                function getQueryParams() {
+                    const params = new URLSearchParams(window.location.search);
+                    return {
+                        title: params.get('title'),
+                        price: params.get('price'),
+                        location: params.get('location'),
+                        description: params.get('description'),
+                        activities: params.get('activities'),
+                        days: params.get('days')
+                    };
+                }
+
+                // Populate form fields with the retrieved query parameters
+                function populateForm(params) {
+                    if (params.title) document.getElementById('title').value = params.title;
+                    if (params.price) document.getElementById('price').value = params.price;
+                    if (params.location) document.getElementById('location').value = params.location;
+                    // if (params.description) document.getElementById('description').value = params.description;
+                    // if (params.activities) document.getElementById('activities').value = params.activities;
+                    if (params.days) document.getElementById('days').value = params.days;
+                }
+
+                // Get the query parameters and populate the form when the page loads
+                const params = getQueryParams();
+                populateForm(params);
+            });
+        };
+
+        // Function to render the contact form
+        const renderContactForm = () => {
+            console.log("Form filled")
+            fillContactForm();
+            navLoad.innerHTML = `${Navbar()}`
+        };
+        renderContactForm();
+    </script>
+</body>
+
+</html>

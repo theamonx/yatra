@@ -1,0 +1,45 @@
+<!-- src/pages/Destinations.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations</title>
+    <link href="../main.css" rel="stylesheet">
+    <link href="../output.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app"></div>
+    <!-- <script src="../app.js" type="module"></script> -->
+    <script type="module">
+        import { fetchDestinations } from '../api.js';
+        import Navbar from '../components/Navbar.js';
+        import DestinationCard from '../components/DestinationCard.js';
+        import Footer from '../components/Footer.js';
+
+        const app = document.getElementById('app');
+
+        const renderDestinationsPage = async () => {
+            app.innerHTML = `
+                ${Navbar()}
+                <section id="destinations" class="container mx-auto py-10">
+                    <h2 class="text-3xl font-bold mb-6">Popular Destinations</h2>
+                    <div id="destinations-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic Destination Cards will be injected here -->
+                    </div>
+                    </section>
+                ${Footer()}
+            `;
+            await loadDestinations();
+        };
+
+        const loadDestinations = async () => {
+            const destinations = await fetchDestinations();
+            const destinationCards = destinations.map(destination => DestinationCard(destination)).join('');
+            document.getElementById('destinations-cards').innerHTML = destinationCards;
+        };
+
+        renderDestinationsPage();
+    </script>
+</body>
+</html>
