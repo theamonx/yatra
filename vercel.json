@@ -1,5 +1,18 @@
 {
     "version": 2,
-    "builds": [{"src": "*.js", "use": "@vercel/node"}],
-    "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+    "builds": [
+        {
+            "src": "./api/index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/" 
+        }
+    ],
+    "env": {
+        "MONGO_URI": "mongodb+srv://amankumarsinghji98:ryaNuY7z2TWkMV34@cluster0.eillo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    }
 }
