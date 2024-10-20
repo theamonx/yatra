@@ -1,3 +1,4 @@
+import "../addRequire.js";
 import Navbar from './components/Navbar.js';
 import TestimonialsCarousel from './components/TestimonialsCarousel.js';
 import Footer from './components/Footer.js';
