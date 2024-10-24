@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities</title>
-    <link href="../main.css" rel="stylesheet">
-    <link href="../output.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="min-h-full">
     <div id="app"></div>
     <!-- <script src="../app.js" type="module"></script> -->
     <script type="module">
-        import { fetchActivities } from '../api.js';
-        import Navbar from '../components/Navbar.js';
-        import ActivityCard from '../components/ActivityCard.js';
-        import Footer from '../components/Footer.js';
+        import { fetchActivities } from '/api.js';
+        import Navbar from '/components/Navbar.js';
+        import ActivityCard from '/components/ActivityCard.js';
+        import Footer from '/components/Footer.js';
 
         const app = document.getElementById('app');
 
@@ -26,7 +26,9 @@
                     <h1 class="text-3xl font-bold mb-4">All Activities</h1>
                     <div id="activity-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
                 </div>
-                ${Footer()}
+                <div class="px-auto w-full h-[200px] relative">
+                        <div class="bottom-0 w-full mt-auto absolute">${Footer()}<div>
+                    </div>
             `;
             await loadActivities();
         };

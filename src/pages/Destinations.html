@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destinations</title>
-    <link href="../main.css" rel="stylesheet">
-    <link href="../output.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="min-h-screen">
     <div id="app"></div>
     <!-- <script src="../app.js" type="module"></script> -->
     <script type="module">
-        import { fetchDestinations } from '../api.js';
-        import Navbar from '../components/Navbar.js';
-        import DestinationCard from '../components/DestinationCard.js';
-        import Footer from '../components/Footer.js';
+        import { fetchDestinations } from '/api.js';
+        import Navbar from '/components/Navbar.js';
+        import DestinationCard from '/components/DestinationCard.js';
+        import Footer from '/components/Footer.js';
 
         const app = document.getElementById('app');
 
@@ -28,7 +28,9 @@
                     <!-- Dynamic Destination Cards will be injected here -->
                     </div>
                     </section>
-                ${Footer()}
+                    <div class="px-auto w-full h-[200px] relative">
+                        <div class="bottom-0 w-full mt-auto absolute">${Footer()}<div>
+                    </div>
             `;
             await loadDestinations();
         };

@@ -8,14 +8,14 @@
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url(./fonts/Blacksword.otf) format('otf');
+        src: url(/fonts/Blacksword.otf) format('otf');
     };
     @font-face{
         font-family: 'HeadingOne';
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url(./fonts/HeadingOne.ttf) format('truetype');
+        src: url(/fonts/HeadingOne.ttf) format('truetype');
     }
 }
 

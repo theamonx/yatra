@@ -55,9 +55,9 @@ app.get('/Activities.html', (req, res) => {
 app.get('/ContactUs.html', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'src', 'pages', 'contact.html'));
 });
-app.get('/Login.html', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'src', 'pages', 'Login.html'));
-});
+// app.get('/Login.html', (req, res) => {
+//   res.sendFile(path.join(__dirname, '..', 'src', 'pages', 'Login.html'));
+// });
 // app.get('/admin', protectRoute, (req, res) => {
 //   res.sendFile(path.join(__dirname, '..', 'src', 'pages', 'Admin.html'));
 // });

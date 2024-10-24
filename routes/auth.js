@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginAdmin, protectRoute, registerAdmin } = require('../src/authenticate');
+const { loginAdmin, protectRoute, registerAdmin } = require('../src/controllers/authenticate');
 const router = express.Router();
 const path = require("path");
 
